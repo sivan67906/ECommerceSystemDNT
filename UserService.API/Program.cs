@@ -29,7 +29,14 @@ namespace UserService.API
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddDbContext<UserDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("UserDbConnection")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("UserDbConnection"),
+            sqlServerOptionsAction: sqlOptions =>
+            {
+                sqlOptions.EnableRetryOnFailure(
+                    maxRetryCount: 5,
+                    maxRetryDelay: TimeSpan.FromSeconds(30),
+                    errorNumbersToAdd: null);
+            }));
 
             builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
             {
