@@ -3,7 +3,7 @@ using ProductService.API.DTOs;
 using ProductService.Application.DTOs;
 using ProductService.Application.Interfaces;
 
-namespace ProductService.Api.Controllers
+namespace ProductService.API.Controllers
 {
     [ApiController]
     [Route("api/products")]

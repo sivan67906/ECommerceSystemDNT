@@ -3,7 +3,7 @@ using ProductService.API.DTOs;
 using ProductService.Application.DTOs;
 using ProductService.Application.Interfaces;
 
-namespace ProductService.Api.Controllers
+namespace ProductService.API.Controllers
 {
     [ApiController]
     [Route("api/inventory")]
@@ -110,7 +110,7 @@ namespace ProductService.Api.Controllers
 
                 return Ok(ApiResponse<List<ProductStockInfoResponseDTO>>.SuccessResponse(results, "Stock verification completed successfully."));
             }
-           
+
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in VerifyStock");

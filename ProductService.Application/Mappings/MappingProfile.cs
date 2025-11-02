@@ -66,7 +66,8 @@ namespace ProductService.Application.Mappings
                 .ForMember(dest => dest.CreatedOn, opt => opt.Ignore())
                 .ForMember(dest => dest.ModifiedOn, opt => opt.Ignore());
 
-            CreateMap<Review, ReviewDTO>();
+            CreateMap<Review, ReviewDTO>()
+                .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => src.Comment));
         }
     }
 }
